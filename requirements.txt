@@ -3,3 +3,4 @@ zipfile36==0.1.3
 urllib3==2.0.7
 pandas==2.1.2
 pyarrow==14.0.1
+pysqlite3==0.5.2

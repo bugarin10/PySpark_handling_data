@@ -24,6 +24,7 @@ with zipfile.ZipFile(zip_path, "r") as zip_ref:
 
 # Read the data
 df = spark.read.csv(file_path, sep="\t", header=True)
+print("table loaded")
 # Changing dosage unit to float
 df = df.withColumn("DOSAGE_UNIT", col("DOSAGE_UNIT").cast("float"))
 # Changing transaction date to int
@@ -35,4 +36,4 @@ df_grouped = df.groupBy("REPORTER_STATE", "BUYER_STATE", "DRUG_NAME", "YEAR").su
 # Converting to pandas dataframe
 pandas_df = df_grouped.toPandas()
 # Exporting the data
-pandas_df.to_csv("../data/opioid_by_state_year.csv")
+pandas_df.to_csv("../data/opioid_by_state_year.csv", index=False)
